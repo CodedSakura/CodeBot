@@ -23,6 +23,10 @@ public class Main extends Command {
             s.append("\nChild commands:");
             for (Command i : children) s.append("`").append(i.name).append("`").append(", ");
             s.delete(s.length() - 2, s.length());
+            s.append("\n\n" +
+                    "This bot uses a special syntax: all commands need to end with () or (args...), and everything afterwards is ignored\n" +
+                    "There's also nested (child) commands, which are separated by `.`, for example `help.list()`\n" +
+                    "By the way, `help.list()` lists all available commands");
             return send(message.getTextChannel(), id, s.toString());
         } else {
             if (main.hasChild(args[0].split("\\."), alias)) {

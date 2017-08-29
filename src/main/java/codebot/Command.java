@@ -47,6 +47,7 @@ public class Command {
     }
 
     public String send(TextChannel c, String id, String m) {
+        if (m.length() > 2000) return send(c, id, "ERR: too long");
         MessageBuilder mb = new MessageBuilder();
         mb.append(m);
         return send(c, id, mb.build());

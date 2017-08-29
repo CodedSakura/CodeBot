@@ -2,7 +2,7 @@
   "prefix": "%",
   "limit": 25,
   "latex": "https://latex.codecogs.com/png.latex?\\bg_white%20\\dpi{500}&space;\\huge&space;",
-  "game": "%help.list()",
+  "game": "%help()",
   "regex": ",(?=(?:[^\"]*\"[^\"]*\")*[^\"]*$)",
   "role cmd": "%role.set(role... roles)",
   "roles cmd": "%role.list()",
@@ -42,6 +42,7 @@
   "alias": {
     "tex": "latex",
     "strike": "warn",
-    "unstrike": "pardon"
+    "unstrike": "pardon",
+    "rand": "random"
   }
 }
