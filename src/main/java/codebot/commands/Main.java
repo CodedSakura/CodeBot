@@ -13,5 +13,6 @@ public class Main extends Command {
         children.add(new Latex());
         children.add(new Purge());
         children.add(new Info());
+        children.add(new Time());
     }
 }
