@@ -18,7 +18,6 @@ class Parse extends Command {
         try {
             return send(message.getTextChannel(), id, parser.parse(args[0]));
         } catch (Exception e) {
-            e.printStackTrace();
             return send(message.getTextChannel(), id, "ERR: " + e.toString());
         }
     }

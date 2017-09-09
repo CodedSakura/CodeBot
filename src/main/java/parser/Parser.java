@@ -118,17 +118,14 @@ public class Parser {
 
 
         // parser
-
         while (data.contains("(")) {
             int end = data.indexOf(")");
             int start = data.subList(0, end).lastIndexOf("(");
             List<String> subData = new ArrayList<>(data.subList(start + 1, end));
             data.subList(start, end + 1).clear();
             data.add(start, solve(subData));
-            System.out.println(data);
         }
 
-        System.out.println(data);
         return new BigDecimal(solve(data)).toString();
     }
 
