@@ -43,6 +43,7 @@
     "tex": "latex",
     "strike": "warn",
     "unstrike": "pardon",
-    "rand": "random"
+    "rand": "random",
+    "calc": "parse"
   }
 }
