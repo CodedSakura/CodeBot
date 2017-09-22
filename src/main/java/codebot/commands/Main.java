@@ -6,6 +6,7 @@ import codebot.Command;
 public class Main extends Command {
     public Main() {
         children.add(new codebot.commands.bot.Main());
+        children.add(new codebot.commands.calc.Main());
         children.add(new codebot.commands.help.Main());
         children.add(new codebot.commands.role.Main());
         children.add(new codebot.commands.user.Main());
@@ -15,6 +16,5 @@ public class Main extends Command {
         children.add(new Info());
         children.add(new Time());
         children.add(new Convert());
-        children.add(new Parse());
     }
 }

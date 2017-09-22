@@ -1,5 +1,6 @@
 package parser;
 
+import parser.error.ParserMathsException;
 import parser.error.ParserNumberException;
 import parser.error.ParserSymbolException;
 
@@ -17,7 +18,7 @@ public class Parser {
     private final String DOI = "-?[\\d]+E?[-+]?\\d+|-?\\d"; // definition of an integer with exponent in ReGeX
     private final int SCALE;
     private final MathContext mc;
-    private Map<String, String> variables = new HashMap<>();
+    public Map<String, String> variables = new HashMap<>();
 
     public Parser() {
         SCALE = 32  ;
@@ -102,8 +103,6 @@ public class Parser {
 
 
         // Check
-        System.out.println(data);
-
         for (int i = 0; i < data.size(); i++) {
             if (data.get(i).matches(DOF)) {
                 data.set(i, new BigDecimal(data.get(i)).toString());
@@ -130,7 +129,6 @@ public class Parser {
     }
 
     private String solve(List<String> data) {
-//        System.out.println(data);
 
         //functions
         for (int i = 0; i < data.size() - 1; i++) {
@@ -299,7 +297,7 @@ public class Parser {
             else if (data.get(i).equals("e")) data.set(i, new BigDecimal(E).toString());
             else if (data.get(i).equals("rand")) data.set(i, new BigDecimal(Math.random()).toString());
             else if (variables.keySet().contains(data.get(i))) {
-                data.set(i, new BigDecimal(variables.get(data.get(i))).toString());
+                data.set(i, new BigDecimal(this.parse(variables.get(data.get(i)))).toString());
             }
         }
 
@@ -459,6 +457,6 @@ public class Parser {
 
         if (data.size() == 1) return data.get(0);
 
-        return data.toString();
+        throw new ParserMathsException(data);
     }
 }

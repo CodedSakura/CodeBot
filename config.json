@@ -44,6 +44,6 @@
     "strike": "warn",
     "unstrike": "pardon",
     "rand": "random",
-    "calc": "parse"
+    "parse": "calc"
   }
 }

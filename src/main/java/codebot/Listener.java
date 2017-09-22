@@ -125,6 +125,7 @@ public class Listener extends ListenerAdapter {
 
         if (g.getTextChannelsByName(name, true).size() == 0) {
             Channel ch = g.getController().createTextChannel(name).complete();
+            ch.getManager().setParent(g.getCategoryById("356132645043699724")).queue();
 
             ch.getMemberPermissionOverrides().forEach(q -> q.getManagerUpdatable().reset());
             ch.createPermissionOverride(g.getRoleById(roles.getString("member"))).setDeny (Permission.MESSAGE_READ).queue();

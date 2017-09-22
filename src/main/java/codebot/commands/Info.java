@@ -139,7 +139,6 @@ class Info extends Command {
                 "owner               " + g.getOwner().getEffectiveName() + "\n" +
                 "default notif. lvl  " + g.getDefaultNotificationLevel().getKey() + "\n" +
                 "verification lvl    " + g.getVerificationLevel().getKey() + "\n" +
-                "default channel     " + g.getPublicChannel().getName() + "\n" +
                 "region              " + g.getRegion().getName() + "\n" +
                 "required MFA level  " + g.getRequiredMFALevel().getKey() + "\n" +
                 "```" + g.getIconUrl();
