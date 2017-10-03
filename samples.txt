@@ -1,0 +1,2 @@
+# All files need absolute path (from root)
+# Sample name will be taken from filename - extension

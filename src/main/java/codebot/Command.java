@@ -46,27 +46,27 @@ public class Command {
         return null;
     }
 
-    public String send(TextChannel c, String id, String m) {
+    public static String send(TextChannel c, String id, String m) {
         if (m.length() > 2000) return send(c, id, "ERR: too long");
         MessageBuilder mb = new MessageBuilder();
         mb.append(m);
         return send(c, id, mb.build());
     }
-    public String send(TextChannel c, String id, MessageEmbed m) {
+    public static String send(TextChannel c, String id, MessageEmbed m) {
         MessageBuilder mb = new MessageBuilder();
         mb.setEmbed(m);
         return send(c, id, mb.build());
     }
-    public String send(TextChannel c, String id, Message m) {
+    public static String send(TextChannel c, String id, Message m) {
         if (id == null) {
             return c.sendMessage(m).complete().getId();
         } else {
             c.editMessageById(id, m).queue();
         }
-        return null;
+        return id;
     }
 
-    public String SOrNoS(int num) {
+    protected String SOrNoS(int num) {
         return (num % 10 == 1 && num % 100 != 11) ? "" : "s";
     }
 }

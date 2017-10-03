@@ -21,7 +21,7 @@
       "roles": ["145570586775519232"]
     },
     "ignored": {
-      "users": [],
+      "users": ["244550000569352192"],
       "roles": ["213312815954526208"]
     }
   },
@@ -44,6 +44,15 @@
     "strike": "warn",
     "unstrike": "pardon",
     "rand": "random",
-    "parse": "calc"
+    "parse": "calc",
+    "audio": "music",
+    "player": "music",
+    "join": "connect",
+    "enter": "connect",
+    "leave": "disconnect",
+    "exit": "disconnect",
+    "np": "current",
+    "nowplaying": "current",
+    "list": "queue"
   }
 }

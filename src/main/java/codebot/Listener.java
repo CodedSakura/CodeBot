@@ -3,7 +3,6 @@ package codebot;
 import codebot.commands.Main;
 import net.dv8tion.jda.core.Permission;
 import net.dv8tion.jda.core.entities.*;
-import net.dv8tion.jda.core.events.DisconnectEvent;
 import net.dv8tion.jda.core.events.ReadyEvent;
 import net.dv8tion.jda.core.events.guild.member.GuildMemberJoinEvent;
 import net.dv8tion.jda.core.events.guild.member.GuildMemberLeaveEvent;
@@ -30,17 +29,19 @@ public class Listener extends ListenerAdapter {
     public static JSONObject cfgAlias = config.getJSONObject("alias");
     public static String prefix = config.getString("prefix");
     public static int limit = config.getInt("limit");
-    public static Command main = new Main();
+    public static Command main;
 
     Listener() {
         for (String i : cfgAlias.keySet()) alias.put(i, cfgAlias.getString(i));
-
-        System.out.println("Using prefix: " + prefix);
     }
 
     @Override
     public void onReady(ReadyEvent event) {
+        main = new Main(event.getJDA().getGuildById("140541822266114048"));
+
         event.getJDA().getPresence().setGame(Game.of(config.getString("game")));
+
+        System.out.println("Using prefix: " + prefix);
     }
 
     @Override
@@ -105,7 +106,7 @@ public class Listener extends ListenerAdapter {
         if (lvl2.getJSONArray("users").toList().contains(event.getAuthor().getId())) perms = 2;
         for (Role r : event.getMember().getRoles()) if (lvl2.getJSONArray("roles").toList().contains(r.getId())) perms = 2;
 
-        boolean valid =  content.indexOf("(") < content.lastIndexOf(")");
+        boolean valid = content.indexOf("(") < content.lastIndexOf(")");
         if (!valid) {
             c.editMessageById(id, "ERR: problem with parenthesis").queue();
             return;
@@ -117,6 +118,8 @@ public class Listener extends ListenerAdapter {
         if (main.hasChild(commands, alias)) main.getChild(commands, alias).checkAndRun(message, args, perms, id);
         else c.editMessageById(id, "ERR: unknown command").queue();
     }
+
+
 
     private void voiceJoin(Channel c, Guild g, Member m) {
         if (c.getMembers().size() < 2) return;
